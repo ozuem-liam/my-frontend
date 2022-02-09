@@ -7,6 +7,7 @@
                 <th>Phone</th>
                 <th>Providers</th>
                 <th></th>
+                <th></th>
             </tr>
             <tr v-for="client in allClients" v-bind:key="client._id" class="client">
                 <td>{{client.name}}</td>
@@ -14,6 +15,7 @@
                 <td>{{client.phone}}</td>
                 <td>{{client.providers.join(", ")}}</td>
                 <td @click="onClick(client)" class="edit">Edit</td>
+                <td @click="deleteClient(client._id)" class="edit">Delete</td>
             </tr>
         </table>
     </div>
@@ -29,7 +31,7 @@ export default {
         EditClient
     },
     methods: {
-        ...mapActions(['fetchClientApi', 'selectAClient']),
+        ...mapActions(['fetchClientApi', 'selectAClient', 'deleteClient']),
         onClick(client) {
             this.selectAClient(client)
             this.$emit('link-click');
