@@ -1,5 +1,4 @@
 import axios from "axios";
-import { mapActions } from "vuex";
 
 const state = {
   clients: [],
@@ -14,7 +13,7 @@ const getters = {
 const actions = {
   async fetchClientApi({ commit }) {
     const response = await axios.get(
-      "https://protranslating-backend.herokuapp.com/client",
+      `${import.meta.env.VITE_APP_API}client`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +26,7 @@ const actions = {
   async addAClient({ commit }, client) {
     
     const response = await axios.post(
-      "https://protranslating-backend.herokuapp.com/client",
+      `${import.meta.env.VITE_APP_API}client`,
       {
         ...client,
         completed: false,
@@ -40,7 +39,7 @@ const actions = {
 
   async editAClient({ commit }, {id, client}) {
     const response = await axios.post(
-      `https://protranslating-backend.herokuapp.com/client/edit/${id}`,
+      `${import.meta.env.VITE_APP_API}client/edit/${id}`,
       {
         ...client,
         completed: false,
@@ -57,7 +56,7 @@ const actions = {
 
   async deleteClient({ commit }, id) {
     await axios.delete(
-      `https://protranslating-backend.herokuapp.com/client/delete/${id}`
+      `${import.meta.env.VITE_APP_API}client/delete/${id}`
     );
 
     commit("removeClient", id);

@@ -12,7 +12,7 @@ const getters = {
 const actions = {
   async fetchProviderApi({ commit }) {
     const response = await axios.get(
-      "https://protranslating-backend.herokuapp.com/provider",
+      `${import.meta.env.VITE_APP_API}provider`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +24,7 @@ const actions = {
 
   async addAProvider({ commit }, provider) {
     const response = await axios.post(
-      "https://protranslating-backend.herokuapp.com/provider",
+      `${import.meta.env.VITE_APP_API}provider`,
       {
         provider,
         completed: false
@@ -36,7 +36,7 @@ const actions = {
 
   async deleteAProvider({ commit }, id) {
     await axios.delete(
-      `https://protranslating-backend.herokuapp.com/provider/delete/${id}`
+      `${import.meta.env.VITE_APP_API}provider/delete/${id}`
     );
 
     commit("removeProvider", id);

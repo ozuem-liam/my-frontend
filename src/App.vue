@@ -14,7 +14,7 @@
   import ClientList from './pages/ClientList.vue'
   import AddClient from './modals/AddClient.vue'
   import EditClient from './modals/EditClient.vue'
-
+  
   export default {
     name: "app",
     data() {
